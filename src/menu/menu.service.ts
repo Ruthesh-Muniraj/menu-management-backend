@@ -1,9 +1,16 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { PrismaClient, Menu } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { CreateMenuDto } from './dto/create-menu.dto';
 import { UpdateMenuDto } from './dto/update-menu.dto';
 
 const prisma = new PrismaClient();
+export interface Menu {
+  id: string;
+  name: string;
+  parentId?: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
 @Injectable()
 export class MenuService {
